@@ -9,6 +9,8 @@ public class Main
         Animal misty = new Animal("Misty");
         Animal lucy = new Animal("Lucy");
 
+        Cat ginger = new Cat("Ginger");
+
         lucy = misty;
         misty.setName("Tara");
 
@@ -17,6 +19,10 @@ public class Main
 
         // Tara Misty
         // Tara Tara
-        
+
+        while(ginger.getLives() != 0)
+        {
+            ginger.kill();
+        }
     }
 }
