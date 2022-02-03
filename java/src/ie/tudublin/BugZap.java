@@ -9,7 +9,9 @@ public class BugZap extends PApplet
     float playerWidth = 25;
 
     float bugX, bugY;
-    float bugWidth = 10;
+    float bugWidth = 20;
+
+    int score = 0;
 
     public void settings() 
     {
@@ -34,11 +36,12 @@ public class BugZap extends PApplet
         strokeWeight(2);
         drawPlayer(playerX, playerY, playerWidth);
         drawBug(bugX, bugY, bugWidth);
-        
-        if((frameCount % 20) == 0)
+
+        if((frameCount % 10) == 0)
         {
             moveBug();
         } 
+        text("Score: " + score, 50, 50);
     }
 
     private void resetBug()
@@ -67,8 +70,17 @@ public class BugZap extends PApplet
 
     public void moveBug()
     {
-        bugY ++;
-        bugX += random(-20, 20);
+        bugY += 10;
+        bugX += random(-30, 30);
+
+        if(bugX <= 0)
+        {
+            bugX = 0;
+        }
+        else if(bugX >= (width - bugWidth))
+        {
+            bugX = (width - bugWidth);
+        }
     }
 
     public void keyPressed()
@@ -79,14 +91,37 @@ public class BugZap extends PApplet
             if (keyCode == LEFT)
             {
                 playerX -= stepSize;  
+                
+                if(playerX <= 0)
+                {
+                    playerX = 0;
+                }
             }
-            else if (keyCode == RIGHT)
+
+            if (keyCode == RIGHT)
             {
                 playerX += stepSize;
+
+                if(playerX >= (width - playerWidth))
+                {
+                    playerX = (width - (playerWidth / 2));
+                }
             }
-            else if (keyCode == ' ')
+
+            if (keyCode == ' ')
             {
-                System.out.println("Space");
+                float halfW = bugWidth / 2;
+
+                if(playerX > bugX - halfW && playerX < bugX + halfW)
+                {
+                    score ++;
+                    resetBug();
+                    line(playerX, playerY-10, playerX, bugY);
+                }
+                else
+                {
+                    line(playerX, playerY - 10, playerX, 0);
+                }
             }
         }        
     }
