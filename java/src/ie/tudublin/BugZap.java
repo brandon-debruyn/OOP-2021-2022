@@ -72,7 +72,7 @@ public class BugZap extends PApplet
     {
         bugY += 10;
         bugX += random(-30, 30);
-
+        
         if(bugX <= 0)
         {
             bugX = 0;
