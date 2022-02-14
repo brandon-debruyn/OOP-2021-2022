@@ -69,9 +69,15 @@ public class Loops extends PApplet
 			}
 			case 1:
 			{
-				noStroke();
-				
-				
+				float squares = (mouseX / 5.0f);
+				float w = width / squares;
+
+				for(int i=0; i<squares; i++)
+				{
+					noStroke();
+					fill(map(i, 0, squares, 0, 255), 255, 255);
+					rect(map(i, 0, squares, 0, 500), 0, w, height);
+				}
 				break;
 			}
 		}
