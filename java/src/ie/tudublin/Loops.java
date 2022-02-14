@@ -22,6 +22,8 @@ public class Loops extends PApplet {
 		println(mode);
 	}
 
+	float offset = 0;
+
 	public void draw() {
 		switch (mode) {
 			case 0: {
@@ -75,13 +77,14 @@ public class Loops extends PApplet {
 			{
 				background(0);
 				float circles = (mouseX / 20.0f);
+				offset += mouseY / 100;
 				float d = width / circles;
 				for(int j=0; j<circles; j++)
 				{
 					for(int i=0; i<circles ;i++)
 					{
 						noStroke();
-						float c = map(i+j, 0, circles * 2, 0, 255);
+						float c = map((i + j + offset), 0, circles * 2, 0, 255) % 256;
 						fill(c, 255, 255);
 						float x = map(i, 0, circles -1, d/2.0f, width - (d/2.0f));
 						float y = map(j, 0, circles -1, d/2.0f, width - (d/2.0f));
