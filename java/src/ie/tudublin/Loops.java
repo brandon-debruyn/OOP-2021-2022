@@ -54,16 +54,24 @@ public class Loops extends PApplet {
 					noStroke();
 					fill(map(i, 0, squares, 0, 255), 255, 255);
 					float x = map(i, 0, squares, 0, width);
-					rect(x, x, h, h);
-					
-					
+					rect(x, x, h, h);	
 				}
-
+				
 				break;
 			}
 			case 2:
 			{
+				// Draws a circle to the screen. By default, the first two parameters set the location of the center, 
+				// and the third sets the shape's width and height. The origin may be changed with the ellipseMode() function.
 				background(0);
+				float w = width / 20.0f;
+				for(int i = 0; i < w; i++)
+				{
+					noStroke();
+					fill(map(i, 0, w, 0, 255), 255, 255);
+					circle(w * i, w, w);
+				}
+				break;
 			}
 			case 3:
 			{
