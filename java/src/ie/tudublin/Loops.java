@@ -131,7 +131,7 @@ public class Loops extends PApplet {
 					float x = cx + cos(ang) * radius; 
 					float y = cy + sin(ang) * radius;
 
-					circle(x, y, 20);
+					line(cx, cy, x, y);
 				}
 
 				break;
