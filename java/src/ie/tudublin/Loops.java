@@ -1,7 +1,5 @@
 package ie.tudublin;
 
-import com.jogamp.opengl.util.texture.TextureData.ColorSpace;
-
 import processing.core.PApplet;
 
 public class Loops extends PApplet {
