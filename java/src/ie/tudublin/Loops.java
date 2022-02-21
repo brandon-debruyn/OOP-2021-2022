@@ -67,8 +67,10 @@ public class Loops extends PApplet {
 					rect(x, x, h, h);
 					rect((width - h) - x, x, h, h);
 				}
-			}
+				
 				break;
+			}
+				
 			case 2:	{
 				background(255);
 				int circles = (int) (mouseX / 20.0f);
@@ -84,10 +86,53 @@ public class Loops extends PApplet {
 						circle(x, y, d);
 					}
 				}
+				break;
 			}
 
 			case 3: {
+				background(0);
+				colorMode(RGB);
 				
+				float border = width * 0.1f;
+				for(int i=-5; i <= 5; i++)
+				{
+					float x = map(i, -5, 5, border, width - border);
+					stroke(0, 255, 0);
+					line(x, border, x, height - border);
+					line(border, x, width - border, x);
+
+					fill(255);
+					text(i, x, border * 0.5f);
+					text(i, border * 0.5f, x);
+				}
+
+				break;
+			}
+
+			case 4: {
+				background(0);
+				colorMode(RGB);
+				
+				stroke(255);
+
+				float cx = width / 2;
+				float cy = height / 2;
+
+				int radius = 200;
+		
+				int sides = (int) map(mouseX, 1, width, 0, 20);
+
+				for(int i=0; i<sides; i++)
+				{
+					float ang = map(i, 0, sides, 0, TWO_PI);
+
+					float x = cx + cos(ang) * radius; 
+					float y = cy + sin(ang) * radius;
+
+					line(cx, cy, x, y);
+				}
+
+				break;
 			}
 
 				// map(a,b,c,d,e);
