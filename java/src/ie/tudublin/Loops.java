@@ -85,55 +85,45 @@ public class Loops extends PApplet {
 						float y = map(j, 0, circles - 1, d / 2.0f, width - (d / 2.0f)); 
 						circle(x, y, d);
 					}
+					
 				}
 				break;
 			}
-
-			case 3: {
+			case 3:
 				background(0);
 				colorMode(RGB);
-				
 				float border = width * 0.1f;
-				for(int i=-5; i <= 5; i++)
+				for(int i = -5; i <= 5; i ++)
 				{
 					float x = map(i, -5, 5, border, width - border);
 					stroke(0, 255, 0);
 					line(x, border, x, height - border);
 					line(border, x, width - border, x);
-
 					fill(255);
 					text(i, x, border * 0.5f);
 					text(i, border * 0.5f, x);
 				}
-
-				break;
-			}
-
-			case 4: {
+			case 4:
 				background(0);
 				colorMode(RGB);
-				
-				stroke(255);
-
+				stroke(255);	
 				float cx = width / 2;
-				float cy = height / 2;
-
-				int radius = 200;
-		
-				int sides = (int) map(mouseX, 1, width, 0, 20);
-
-				for(int i=0; i<sides; i++)
+				float cy = height / 2;	
+				float radius = 200;		
+				int sides = (int)map(mouseX, 1, width, 2, 10);
+				for(int i = 1 ; i <= sides ; i ++)
 				{
-					float ang = map(i, 0, sides, 0, TWO_PI);
+					float theta1 = map(i - 1, 0, sides, 0, TWO_PI);
+					float x1 = cx + sin(theta1) * radius;
+					float y1 = cy + cos(theta1) * radius;
 
-					float x = cx + cos(ang) * radius; 
-					float y = cy + sin(ang) * radius;
+					float theta2 = map(i, 0, sides, 0, TWO_PI);
+					float x2 = cx + sin(theta2) * radius;
+					float y2 = cy + cos(theta2) * radius;
+					line(x1, y1, x2, y2);
 
-					line(cx, cy, x, y);
+					//circle(x, y, 20);
 				}
-
-				break;
-			}
 
 				// map(a,b,c,d,e);
 				// a = inputvalue
