@@ -18,15 +18,9 @@ public class Life extends PApplet {
 
 
 	public void settings() {
-<<<<<<< HEAD
-		size(500, 500);
-		board = new LifeBoard(100, this);
-		board.randomise();
-=======
 		size(1000, 1000);
 		board = new LifeBoard(200, this);
 		//board.randomise();
->>>>>>> 016e3f4695348f106069e871a5a87a3625b05bb1
 		println(board.countCellsAround(1, 1));
 	}
 
