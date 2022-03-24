@@ -5,8 +5,14 @@ import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import ddf.minim.analysis.FFT;
-import ddf.minim.analysis.WindowFunction;
 import processing.core.PApplet;
+
+/*
+
+The infinite number of waves make up the mind, and all minds are made up of these waves which then interact with one another to form reality via Fourier transformations
+Science is not supposed to give meaning to ones life or the reason behind their existence; science only explains the testable and provable mechanisms that run the universe
+
+*/
 
 public class Audio2 extends PApplet
 {
@@ -48,11 +54,11 @@ public class Audio2 extends PApplet
     {
         minim = new Minim(this);
         // Uncomment this to use the microphone
-        // ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
-        // ab = ai.mix; 
-        ap = minim.loadFile("heroplanet.mp3", 1024);
-        ap.play();
-        ab = ap.mix;
+        ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
+        ab = ai.mix; 
+        //ap = minim.loadFile("heroplanet.mp3", 1024);
+        //ap.play();
+        //ab = ap.mix;
         colorMode(RGB);
 
         fft = new FFT(1024, 44100);
@@ -69,9 +75,9 @@ public class Audio2 extends PApplet
     {
         background(0);
         stroke(255);
-
-        float halfH = height/2; 
-        for(int i=0; i < ab.size(); i++) {
+        float halfH = height / 2;
+        for(int i = 0 ; i < ab.size() ; i ++)
+        {
             line(i, halfH, i, halfH + ab.get(i) * halfH);
         }
 
@@ -79,19 +85,29 @@ public class Audio2 extends PApplet
         fft.forward(ab);
 
         stroke(0, 255, 0);
-        for(int j = 0; j < fft.specSize(); j++ ) {
-            line(j, 0, j, fft.getBand(j) * 10);
+        for(int i = 0 ; i < fft.specSize(); i ++)
+        {
+            line(i, 0, i,fft.getBand(i) * 10);
         }
+
 
         int maxIndex = 0;
 
-        for(int i=0 ; i< fft.specSize(); i++) {
-            if(fft.getBand(i) > fft.getBand(maxIndex)) {
+        for(int i = 0 ; i < fft.specSize(); i ++)
+        {
+            if (fft.getBand(i) > fft.getBand(maxIndex))
+            {
                 maxIndex = i;
             }
         }
 
-        float freq = fft.indexToFreq((maxIndex));
+        // Fill out missing code!!
+
+        float freq = fft.indexToFreq(maxIndex);
+
+        textSize(20);
+        fill(255);
+        text("Freq: " + freq, 100, 200);
 
         textSize(20);
         fill(255);
