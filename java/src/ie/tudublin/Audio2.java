@@ -20,6 +20,8 @@ public class Audio2 extends PApplet
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
+    // pitchspeller
+    PitchSpeller ps;
 
     int mode = 0;
 
@@ -54,12 +56,14 @@ public class Audio2 extends PApplet
     {
         minim = new Minim(this);
         // Uncomment this to use the microphone
-        ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
-        ab = ai.mix; 
-        //ap = minim.loadFile("heroplanet.mp3", 1024);
-        //ap.play();
-        //ab = ap.mix;
+        //ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
+        //ab = ai.mix; 
+        ap = minim.loadFile("heroplanet.mp3", 1024);
+        ap.play();
+        ab = ap.mix;
         colorMode(RGB);
+
+        ps = new PitchSpeller();
 
         fft = new FFT(1024, 44100);
 
@@ -111,6 +115,7 @@ public class Audio2 extends PApplet
 
         textSize(20);
         fill(255);
-        text("Freq: " + freq, 100, 200);
+        text("Freq: " + ps.spell(freq), 100, 250);
+        System.out.println((ps.spell(400)));
     }        
 }
