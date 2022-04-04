@@ -10,6 +10,9 @@ public class StarMap extends PApplet {
 
     ArrayList<Star> stars = new ArrayList<Star>();
     
+    Star first = null;
+    Star second = null;
+    
     public float border;
 
     void drawGrid()
@@ -53,7 +56,26 @@ public class StarMap extends PApplet {
 
     public void mouseClicked()
     {
-        
+        for(Star s:stars) {
+            float x = map(s.getxG(), -5, 5, border, width - border);
+            float y = map(s.getyG(), -5, 5, border, height - border);
+
+            if(dist(mouseX, mouseY, x, y) < s.getAbsMag()) {
+                if(first == null) {
+                    first = s;
+                    break;
+                }
+                else if(second == null) {
+                    second = s;
+                    break;
+                }
+                else {
+                    first = s;
+                    second = null;
+                    break;
+                }
+            }
+        } 
     }
 
     public void setup() {
@@ -77,5 +99,30 @@ public class StarMap extends PApplet {
         background(0);
         drawGrid();
         drawStars();
+
+        if(first != null ) {
+            float x = map(first.getxG(), -5, 5, border, width - border);
+            float y = map(first.getyG(), -5, 5, border, height - border);
+
+            if(second != null) {
+                float x2 = map(second.getxG(), -5, 5, border, width - border);
+                float y2 = map(second.getyG(), -5, 5, border, height - border);
+
+                
+                stroke(255, 255, 0);
+                line(x, y, x2, y2);
+
+                float dist = dist(first.getxG(), first.getyG(), first.getzG(), second.getxG(), second.getyG(), second.getzG());
+                fill(255);
+                textAlign(CENTER);
+                text("distance between: " + first.getDisplayName() + " and " + second.getDisplayName() + ": " + dist + " parsecs", width / 2, height - (border * 0.5f));
+            }
+            else {    
+                stroke(255, 255, 0);
+                line(x, y, mouseX, mouseY);
+            }
+
+        }
+
     }
 }

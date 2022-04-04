@@ -84,9 +84,9 @@ public class Main
     }
     public static void main(String[] args)
     {
-        //starMap();
+        starMap();
 
-        audio2();
+        //audio2();
 
         // Tara Misty
         // Tara Tara
