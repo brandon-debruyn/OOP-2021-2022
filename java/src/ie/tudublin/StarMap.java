@@ -53,11 +53,6 @@ public class StarMap extends PApplet {
         size(800, 800);
     }
 
-    Star first = null;
-    Star second = null;
-
-
-
     public void mouseClicked()
     {
         for(Star s:stars)
