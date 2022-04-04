@@ -10,6 +10,8 @@ public class Player
     YASC yasc;
     float rotation;
 
+    float rotation;
+
     public Player(float x, float y, float w, YASC yasc)
     {
         this.x = x;
@@ -21,40 +23,44 @@ public class Player
     }
 
     void render()
-    {   
+    {
         yasc.pushMatrix();
         yasc.translate(x, y);
         yasc.rotate(rotation);
-
         float halfW = w / 2;
         yasc.stroke(255);
         yasc.line(- halfW, halfW, 0, - halfW);
-        yasc.line(x, y - halfW, x + halfW, y + halfW);
-        yasc.line(x + halfW, y + halfW, x, y);
-        yasc.line(x, y, x - halfW, y + halfW);
+        yasc.line(0, - halfW, halfW, halfW);
+        yasc.line(halfW, halfW, 0, 0);
+        yasc.line(0, 0, - halfW, + halfW);
         yasc.popMatrix();
     }
 
-    public void update() {
-        if(yasc.keyPressed) {
-            if (yasc.key == 'w') {
+
+    public void update()
+    {
+        if (yasc.keyPressed)
+        {
+            if (yasc.key == 'w')
+            {
                 x += fx;
                 y += fy;
             }
-            else if (yasc.key == 's') {
+            if (yasc.key == 's')
+            {
                 x -= fx;
                 y -= fy;
             }
-            else if (yasc.key == 'a') {
+            if (yasc.key == 'a')
+            {
                 rotation -= 0.01f;
             }
-            else if (yasc.key == 'd') {
+            if (yasc.key == 'd')
+            {
                 rotation += 0.01f;
             }
         }
-
         fx = YASC.cos(rotation);
         fy = YASC.sin(rotation);
     }
-
 }
