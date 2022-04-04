@@ -10,8 +10,6 @@ public class Player
     YASC yasc;
     float rotation;
 
-    float rotation;
-
     public Player(float x, float y, float w, YASC yasc)
     {
         this.x = x;
