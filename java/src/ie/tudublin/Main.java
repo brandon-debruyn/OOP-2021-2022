@@ -96,10 +96,10 @@ public class Main
     }
     public static void main(String[] args)
     {
-        //YASC();
+        YASC();
         //starMap();
         //audio2();
-        audio1();
+        //audio1();
 
         // Tara Misty
         // Tara Tara
