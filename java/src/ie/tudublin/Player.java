@@ -57,8 +57,9 @@ public class Player
             {
                 rotation += 0.01f;
             }
-            if (yasc.key == ' ') {
-                yasc.gameobjects.add(new Bullet(yasc, x, y, rotation));
+            if (yasc.key == ' ')
+            {
+                yasc.gameObjects.add(new Bullet(yasc, x, y, rotation));
             }
         }
         fx = YASC.sin(rotation);
