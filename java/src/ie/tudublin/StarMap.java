@@ -86,6 +86,7 @@ public class StarMap extends PApplet {
         colorMode(RGB);
         loadStars();
         printStars();
+        System.out.println(stars.get(0));
 
         border = width * 0.1f;
     }
